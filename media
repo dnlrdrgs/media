@@ -1,0 +1,66 @@
+package media;
+
+public class Main {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+        Tela tela = new Tela();
+        tela.setVisible(true);
+	}
+
+}
+
+package media;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class Tela extends JFrame implements ActionListener{
+	 private JLabel lblP1, lblP2, lblMedia;
+	 private JTextField txtP1, txtP2, txtMedia;
+	 private JButton btnCalcular;
+	 
+	 public Tela() {
+		 setTitle("C�lculo da M�dia");
+	 
+		 lblP1 = new JLabel("P1:");
+	     lblP2 = new JLabel("P2:");
+	     lblMedia = new JLabel("M�dia:");
+	     txtP1 = new JTextField("");
+	     txtP2 = new JTextField("");
+	     txtMedia = new JTextField("");
+	     btnCalcular = new JButton("Calcular");
+	 
+	     txtMedia.setEditable(false);
+	 
+	     JPanel painel = new JPanel();
+	     painel.setLayout(new GridLayout(4, 2, 5, 5));
+	 
+	     painel.add(lblP1);
+	     painel.add(txtP1);
+	     painel.add(lblP2);
+	     painel.add(txtP2);
+	     painel.add(lblMedia);
+	     painel.add(txtMedia);
+	     painel.add(btnCalcular);
+	 
+	     setContentPane(painel);
+	 
+	     pack();  
+	     btnCalcular.addActionListener(this);
+	     setDefaultCloseOperation(EXIT_ON_CLOSE);
+	 }
+	@Override
+	public void actionPerformed(ActionEvent ev) {
+	    		// entradas
+	double p1 = Double.parseDouble(txtP1.getText());
+	double p2 = Double.parseDouble(txtP2.getText());
+			 
+		        // processamento
+	double media = (p1 + p2) / 2; 
+	    		// sa�da
+	    		txtMedia.setText(String.valueOf(media));
+	}	
+
+}
